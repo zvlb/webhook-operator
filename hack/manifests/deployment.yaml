@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app.kubernetes.io/name: webhook-operator
+  name: webhook-operator
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: webhook-operator
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: webhook-operator
+    spec:
+      containers:
+      - image: zvlb/webhook-operator:v0.0.1
+        imagePullPolicy: IfNotPresent
+        name: webhook-operator
+        volumeMounts:
+        - mountPath: /tmp/k8s-webhook-server/serving-certs
+          name: cert
+          readOnly: true
+      serviceAccount: webhook-operator
+      serviceAccountName: webhook-operator
+      volumes:
+      - name: cert
+        secret:
+          defaultMode: 420
+          secretName: webhook-operator-tls

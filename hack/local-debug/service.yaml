@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: webhook-operator-webhook-service
+spec:
+  ports:
+    - protocol: TCP
+      port: 443
+      targetPort: 9443
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: webhook-operator-webhook-service
+subsets:
+  - addresses:
+      - ip: 172.28.128.98
+    ports:
+      - port: 9443

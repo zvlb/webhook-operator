@@ -1,0 +1,6 @@
+apiVersion: webhook.zvlb.github.io/v1alpha1
+kind: Test
+metadata:
+  name: test-sample
+spec:
+  name: zvlb

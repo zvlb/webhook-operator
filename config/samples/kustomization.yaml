@@ -1,0 +1,4 @@
+## Append samples of your project ##
+resources:
+- webhook_v1alpha1_test.yaml
+#+kubebuilder:scaffold:manifestskustomizesamples

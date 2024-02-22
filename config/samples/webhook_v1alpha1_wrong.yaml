@@ -1,0 +1,6 @@
+apiVersion: webhook.zvlb.github.io/v1alpha1
+kind: Test
+metadata:
+  name: wrong-sample
+spec:
+  name: lol
